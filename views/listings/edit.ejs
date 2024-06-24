@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>: Edit listing</title>
+</head>
+<body>
+    <h1>Edit listing</h1>
+    <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
+        <label>
+            Street address:
+            <input name="streetAddress" required value="<%= listing.streetAddress %>">
+        </label>
+        <label>
+            City:
+            <input name="city" required value="<%= listing.city %>">
+        </label>
+        <label>
+            Price:
+            <input name="price" type="number" min="0" required value="<%= listing.price %>">
+        </label>
+        <label>
+            Size:
+            <input name="size" type="number" min="0" required value="<%= listing.size %>">
+        </label>
+        <button>Update listing</button>
+    </form>
+</body>
+</html>

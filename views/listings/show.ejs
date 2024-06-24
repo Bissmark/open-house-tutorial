@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>: <% listing.name %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Listing in <%= listing.city %></h1>
+
+    <h2>Details:</h2>
+    <p>Size: <%= listing.size %> square feet</p>
+    <p>Price: $<%= listing.price %></p>
+    <p>Address: <%= listing.streetAddress %></p>
+
+    <h2>Owner</h2>
+    <% if (listing.owner._id.equals(user._id)) { %>
+        <p>You own this</p>
+        <a href="/listings/<%= listing._id %>/edit">Edit listing</a>
+        <form
+            action="/listings/<%= listing._id %>?_method=DELETE"
+            method="post"
+        >
+            <button>Delete listing</button>
+        </form>
+    <% } else { %>
+        <p>Owned by <%= listing.owner.username %></p>
+    <% } %>
+
+    <h2>Favorites</h2>
+    <p>Favorited by <%= listing.favoritedByUsers.length %> users</p>
+    <% if (alreadyFavorited) { %>
+        <form action="/listings/<%= listing._id %>/favorites?_method=DELETE" method="post">
+            <button>Remove from favorites</button>
+        </form>
+    <% } else { %>
+        <form action="/listings/<%= listing._id %>/favorite" method="post">
+            <button>Add to favorites</button>
+        </form>
+    <% } %>
+</body>
+</html>

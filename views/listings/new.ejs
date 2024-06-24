@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>: New listing</title>
+</head>
+<body>
+    <h1>New listing</h1>
+    <form action="/listings" method="post">
+        <label>
+            Street address:
+            <input name="streetAddress" required>
+        </label>
+        <label>
+            City:
+            <input name="city" required>
+        </label>
+        <label>
+            Price:
+            <input name="price" type="number" min="0" required>
+        </label>
+        <label>
+            Size:
+            <input name="size" type="number" min="0" required>
+        </label>
+        <button>Add listing</button>
+    </form>
+</body>
+</html>
