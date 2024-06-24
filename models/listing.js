@@ -26,6 +26,12 @@ const listingSchema = new mongoose.Schema({
     favoritedByUsers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    }],
+    images: [{
+        type: String
+    }],
+    cloudinary_id: [{
+        type: String
     }]
 });
 

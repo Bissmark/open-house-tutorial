@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>New listing</h1>
-    <form action="/listings" method="post">
+    <form action="/listings" enctype="multipart/form-data" method="post">
         <label>
             Street address:
             <input name="streetAddress" required>
@@ -23,6 +23,10 @@
         <label>
             Size:
             <input name="size" type="number" min="0" required>
+        </label>
+        <label>
+            Image:
+            <input type="file" name="image">
         </label>
         <button>Add listing</button>
     </form>

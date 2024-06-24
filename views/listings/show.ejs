@@ -13,6 +13,20 @@
     <p>Size: <%= listing.size %> square feet</p>
     <p>Price: $<%= listing.price %></p>
     <p>Address: <%= listing.streetAddress %></p>
+    <p>
+        Images:
+        <!-- <img src="<%= listing.images %>" alt=""> -->
+        <% listing.images.forEach(image => { %>
+            <img src="<%= image %>" alt="">
+        <% }) %>
+    </p>
+    <p>
+        Add New Image
+        <form action="/listings/<%= listing._id %>/images" enctype="multipart/form-data" method="post">
+            <input type="file" name="image">
+            <button>Upload Image</button>
+        </form>
+    </p>
 
     <h2>Owner</h2>
     <% if (listing.owner._id.equals(user._id)) { %>
